@@ -33,8 +33,12 @@
             {% block header %}
             <header>
             
+            <div class="d-flex header">
                 <h1 class="c-1 text-center">PINTEREST</h1>
 
+                <a class="button" href="{{ path('app_login') }}"> Me Connecter </a>
+
+            </div>
                 {# Barre de recherche  #}
 
                 <form action="{{ path('front_search') }}" method="get"  class="d-flex">
