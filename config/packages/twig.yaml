@@ -1,11 +1,8 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
 
-    #globals:
-    #    batman: "Batman"
-    #    gproducts: '@App\Globals\Products'
-    #    gbrand: '@App\Globals\Brands'
-    #    gtypes: '@App\Globals\Types'
+    globals:
+        gcategory: '@App\Globals\Categorys'
 
     # on déclare le theme à utiliser pour les formulaires de notre site
     

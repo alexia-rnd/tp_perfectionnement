@@ -19,6 +19,25 @@ class MediaRepository extends ServiceEntityRepository
         parent::__construct($registry, Media::class);
     }
 
+    // Fonction pour barre de recherche //
+    public function searchByTerm($term)
+    {
+        // QueryBuilder permet de créer des requêtes SQL en PHP
+        $queryBuilder = $this->createQueryBuilder('media');
+
+        // Requête
+        $query = $queryBuilder
+            ->select('media')
+            //->leftJoin('media.category', 'type') // leftJoin surla table type
+            ->where('media.title LIKE :term') // WHERE en SQL
+            //->orWhere('category.name LIKE :term')
+            ->setParameter('term', '%' . $term . '%')
+            ->getQuery();
+
+        return $query->getResult();
+        }
+
+
     // /**
     //  * @return Media[] Returns an array of Media objects
     //  */

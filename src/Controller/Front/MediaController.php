@@ -35,19 +35,19 @@ class MediaController extends AbstractController
 
     // bare de recherche
 
-        /**
+    /**
      * @Route("/front/search", name="front_search")
      */
-    public function frontSearch(MediaRepository $productRepository, Request $request)
+    public function frontSearch(MediaRepository $mediaRepository, Request $request)
     {
 
         //Recuperer les données rentré dans le formulaire 
         $term = $request->query->get('term'); // get est le name du champs
 
-        $media = $productRepository->searchByTerm($term);
+        $medias = $mediaRepository->searchByTerm($term);
 
-        return $this->render('front/product/search.html.twig', [
-            "products" => $media
+        return $this->render('front/search.html.twig', [
+            "medias" => $medias
         ]);
 
     }
