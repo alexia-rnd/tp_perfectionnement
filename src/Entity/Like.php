@@ -20,6 +20,7 @@ class Like
 
     /**
      * @ORM\ManyToOne(targetEntity=Media::class, inversedBy="likes")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $media;
 

@@ -2,7 +2,6 @@
 
 {% block main %}
 <p class="admin">INTERFACE ADMINISTRATOR<p>
-
 <h1>Les plus belles images</h1>
 
 <section class="d-flex">
@@ -14,13 +13,26 @@
     <a href="  {{ path('front_media_id', {id : media.id} ) }}   ">
         <img src="{{ media.src }}" alt="{{ media.alt }}" class="img-w20"> 
     </a>
-        
-
-
 
 <h2 class="">{{media.title}}</h2>
-<p><small>Categorie</small> : à ajouter</p>
 
+    <p><small>Categorie : </small> 
+        <a href="  {{ path('front_category_id', {id : media.category.id} ) }}"> 
+            {{ media.category.name }}
+         <a> 
+    </p>
+    
+                {## LIKE #}
+            <a href="{{ path("media_like", {'id' : media.id}) }}" class="btn btn-link js-likes">
+            {% if app.user and media.isLikedByUser(app.user) %}
+			<i class="fas fa-thumbs-up"></i>
+            {% else %}
+            <i class="far fa-thumbs-up"></i>
+            {% endif %}
+			<span class="js-likes">{{ media.likes | length }}
+            </span>
+			<span class="js-label">J'aime</span>
+		</a>
 </div>
 
 
@@ -28,4 +40,31 @@
 {% endfor %}
 
 </section>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script>
+	function onClickLike(event) {
+        event.preventDefault();
+        const url = this.href;
+        const spanCount = this.querySelector('span.js-likes');
+        const icone = this.querySelector('i');
+        axios.get(url).then(function (response) {
+            spanCount.textContent = response.data.likes;
+        
+            if (icone.classList.contains('fas')) {
+                icone.classList.replace('fas', 'far');
+            } else {
+                icone.classList.replace('far', 'fas');
+            }
+        }).catch(function(error){
+            if(error.response.status == 403){
+                window.alert("Connexion requise");
+            }else{
+                window.alert("Une erreur s'est produite");
+            }
+        })
+    }
+    document.querySelectorAll('a.js-likes').forEach(function (link) {
+        link.addEventListener('click', onClickLike);
+    })
+</script>
 {% endblock %}
