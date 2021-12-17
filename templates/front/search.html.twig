@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+
+
+
+{% block main %}
+<h1> Chercher votre image</h1>
+
+
+	{% for media in medias %}
+
+		<h2>{{ media.title }}</h2>
+
+	{% endfor %}
+
+
+{% endblock %}

@@ -1,3 +1,11 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+front_media_list:
+    path: /
+    controller: App\Controller\Front\MediaController::Mediaslist
+
+front_media_id:
+    path: /front/media_{id<\d+>}
+    controller: App\Controller\Front\MediaController::MediaId

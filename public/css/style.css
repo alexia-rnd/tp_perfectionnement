@@ -1,0 +1,116 @@
+
+
+:root{
+    --c-1:red;
+    --c-white:white;
+    --c-black:black;
+    --primary-font:'Sora', sans-serif;
+    --secondary-font:'Roboto', sans-serif;
+    --size-L: calc(30px + (55 - 30) * ((100vw - 280px) / (2650 - 280)));
+    --size-M: calc(25px + (35 - 25) * ((100vw - 280px) / (2650 - 280)));
+    --size-S: calc(16px + (20 - 16) * ((100vw - 280px) / (2650 - 280)));
+}
+
+html{
+    margin: 0;
+    padding: 0;
+}
+.c-1{
+    color: var(--c-1);
+}
+
+h1, h2, form label, button{
+    font-family: var(--primary-font);
+}
+h1{
+    font-size: var(--size-L);
+    text-align: center;
+}
+
+h2{
+    font-size: var(--size-S);
+}
+
+.text-center{
+    text-align: center;
+}
+p{
+    font-size:var(--size-S);
+    font-family: var(--secondary-font);
+    font-weight: 100;
+    
+}
+.card{
+    background-color: #f7f7f7;
+    margin: 10px;
+    padding: 20px;
+    width: 20vw;
+    border-radius: 20px;
+    
+}
+img, form input, button{
+    box-shadow: -14px 11px 18px -12px rgba(0,0,0,0.69);
+    -webkit-box-shadow: -14px 11px 18px -12px rgba(0,0,0,0.69);
+    -moz-box-shadow: -14px 11px 18px -12px rgba(0,0,0,0.69);
+}
+.img-w20{
+    max-width: 20vw;
+}
+.img-w60{
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+    width: 60vw;
+    max-width: 60vw;
+}
+.d-flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.admin{
+    background: var(--c-black);
+    color: var(--c-white);
+    text-align: center;
+    padding: 10px;
+}
+small{
+    font-weight: bold;
+}
+
+
+form{
+    text-align: center;
+    background: var(--c-1);
+    color: var(--c-white);
+    padding: 20px;
+    width: 80vw;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius: 20px;
+    font-size: var(--size-S);
+}
+
+form div{
+    padding-bottom: 10px;
+}
+
+form input{
+    width: 73vw;
+    background: white;
+    border: none;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-top: 5px;
+    color: red;
+}
+
+button{
+    background: black;
+    border: none;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+footer{background-color: var(--c-1);text-align: center;color: var(--c-white);}

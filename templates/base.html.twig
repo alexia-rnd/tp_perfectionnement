@@ -7,13 +7,51 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
+            
+            <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+            <link rel="stylesheet" href="{{ asset('css/normalize.css') }}">
+            {#* google font  #}
+<link rel="preconnect" href="https://fonts.googleapis.com"> 
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@500&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+            
         {% endblock %}
+
+        
 
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
+
+
     <body>
-        {% block body %}{% endblock %}
+        {% block body %}
+
+            {% block header %}
+            <header>
+            
+                <h1 class="c-1 text-center">PINTEREST</h1>
+
+                {# Barre de recherche  #}
+
+                <form action="{{ path('front_search') }}" method="get"  class="d-flex">
+                    <input type="search" name="term" placeholder="Rechercher une image" aria-label="Rechercher une image">
+                    <input class="btn btn-dark" type="submit" value="Rechercher">
+                </form>
+                {# FIN Barre de recherche  #}
+                </header>
+            {% endblock %}
+
+            {% block main %}{% endblock %}
+
+
+            {% block footer %}
+            <footer>
+                <p>© Alexia Raynaud {{ "now" | date("m/d/Y") }} | Symfony Perfectionnement - Doranco</p>
+            </footer>
+            {% endblock %}
+        
+        {% endblock %}
     </body>
 </html>

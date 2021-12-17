@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+
+<h1>Les plus belles images</h1>
+
+<section class="d-flex">
+{% for media in medias %}
+
+<div class="card" >
+
+    
+    <a href="  {{ path('front_media_id', {id : media.id} ) }}   ">
+        <img src="{{ media.src }}" alt="{{ media.alt }}" class="img-w20"> 
+    </a>
+        
+
+
+
+<h2 class="">{{media.title}}</h2>
+<p><small>Categorie</small> : à ajouter</p>
+
+</div>
+
+
+
+{% endfor %}
+
+</section>
+{% endblock %}
