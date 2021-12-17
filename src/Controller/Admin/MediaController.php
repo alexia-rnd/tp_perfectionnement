@@ -4,6 +4,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Media;
+use App\Entity\Category;
 use App\Form\MediaType;
 use App\Repository\MediaRepository;
 use Doctrine\ORM\EntityManagerInterface;

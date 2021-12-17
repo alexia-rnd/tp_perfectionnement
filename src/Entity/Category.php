@@ -31,7 +31,6 @@ class Category
 
     /**
      * @ORM\OneToMany(targetEntity=Media::class, mappedBy="category")
-     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $media;
 

@@ -42,7 +42,6 @@ class Media
 
     /**
      * @ORM\OneToMany(targetEntity=Like::class, mappedBy="media")
-     * @ORM\JoinColumn(name="like_id", referencedColumnName="id", onDelete="CASCADE")
      */
     private $likes;
 
