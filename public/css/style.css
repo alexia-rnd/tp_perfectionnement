@@ -20,9 +20,14 @@ html{
     color: var(--c-1);
 }
 
-h1{
+h1, .logo{
     font-size: var(--size-L);
     text-align: center;
+}
+
+.logo{
+    font-family: var(--primary-font);
+    font-weight: bold;
 }
 
 h2{

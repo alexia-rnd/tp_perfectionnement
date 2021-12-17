@@ -28,9 +28,9 @@ class MediaRepository extends ServiceEntityRepository
         // Requête
         $query = $queryBuilder
             ->select('media')
-            //->leftJoin('media.category', 'type') // leftJoin surla table type
+            ->leftJoin('media.category', 'name') // leftJoin surla table type
             ->where('media.title LIKE :term') // WHERE en SQL
-            //->orWhere('category.name LIKE :term')
+            
             ->setParameter('term', '%' . $term . '%')
             ->getQuery();
 
