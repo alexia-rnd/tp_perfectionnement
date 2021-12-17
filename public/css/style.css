@@ -118,4 +118,7 @@ button{
     border-radius: 5px;
 }
 
+.js-likes{
+    color: var(--c-1);
+}
 footer{background-color: var(--c-1);text-align: center;color: var(--c-white);}
