@@ -4,7 +4,11 @@
 
 <section>
 <h1>{{media.title}}</h1>
-<p class="text-center"><small>Categorie</small>: <br> à ajouter</p>
+    <p class="text-center"><small>Categorie : </small> 
+        <a href="  {{ path('front_category_id', {id : media.category.id} ) }}"> 
+            {{ media.category.name }}
+         <a> 
+    </p>
 
 <img src="{{ media.src }}" alt="{{ media.alt }}" class="img-w60"> 
 

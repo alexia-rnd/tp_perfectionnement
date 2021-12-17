@@ -2,7 +2,7 @@ twig:
     default_path: '%kernel.project_dir%/templates'
 
     globals:
-        gcategory: '@App\Globals\Categorys'
+        gcategory: '@App\Globals\Category'
 
     # on déclare le theme à utiliser pour les formulaires de notre site
     

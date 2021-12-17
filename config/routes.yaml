@@ -9,3 +9,11 @@ front_media_list:
 front_media_id:
     path: /front/media_{id<\d+>}
     controller: App\Controller\Front\MediaController::MediaId
+
+front_category_list:
+    path: /front/category
+    controller: App\Controller\Front\CategoryController::Categorylist
+
+front_category_id:
+    path: /front/category_{id<\d+>}
+    controller: App\Controller\Front\CategoryController::CategoryId

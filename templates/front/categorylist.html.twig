@@ -1,0 +1,25 @@
+{% extends "base.html.twig" %}
+
+{% block main %}
+
+<h1>Les plus belles images</h1>
+
+<section class="d-flex">
+{% for gcategory in gcategory.getAll %}
+
+<div class="card" >
+
+        
+    <a href="  {{ path('front_category_id', {id : gcategory.id} ) }}   ">    
+    <h2>{{ gcategory.name }}</h2>
+    <p>{{ gcategory.description }}</p>
+    </a> 
+
+</div>
+
+
+
+{% endfor %}
+
+</section>
+{% endblock %}
