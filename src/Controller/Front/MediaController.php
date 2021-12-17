@@ -3,7 +3,10 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Like;
+use App\Repository\LikeRepository;
 use App\Repository\MediaRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -51,4 +54,53 @@ class MediaController extends AbstractController
         ]);
 
     }
+    /**
+     * @Route("/like/media_{id<\d+>}", name="media_like")
+     */
+    public function likeMedia(
+        $id,
+        MediaRepository $mediaRepository,
+        EntityManagerInterface $entityManagerInterface,
+        LikeRepository $likeRepository
+    ) {
+        $media = $mediaRepository->find($id);
+        $user = $this->getUser();
+
+        if (!$user) {
+            return $this->json([
+                'code' => 403,
+                'message' => "Vous devez être connecté"
+            ], 403);
+        }
+
+        if ($media->isLikedByUser($user)) {
+            $like = $likeRepository->findOneBy([
+                'media' => $media,
+                'user' => $user
+            ]);
+
+            $entityManagerInterface->remove($like);
+            $entityManagerInterface->flush();
+
+            return $this->json([
+                'code' => 200,
+                'message' => "Le like a été supprimé",
+                'likes' => $likeRepository->count(['media' => $media])
+            ], 200);
+        }
+
+        $like = new Like();
+        $like->setMedia($media);
+        $like->setUser($user);
+
+        $entityManagerInterface->persist($like);
+        $entityManagerInterface->flush();
+
+        return $this->json([
+            'code' => 200,
+            'message' => "Le like a été enregistré",
+            'likes' => $likeRepository->count(['media' => $media])
+        ], 200);
+    }
+
 }
